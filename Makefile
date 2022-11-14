@@ -24,7 +24,7 @@ LIBFT = ./libft/libft.a
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(Q01) $(Q02)
+$(NAME): $(LIBFT) $(Q01) $(Q02) $(Q03)
 
 $(LIBFT):
 	@make -C ./libft
@@ -37,6 +37,11 @@ $(01_OBJS): $(01_SRCS)
 $(Q02): $(02_OBJS)
 	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q02) $(02_OBJS) $(LIBFT)
 $(02_OBJS): $(02_SRCS)
+	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+
+$(Q03): $(03_OBJS)
+	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q03) $(03_OBJS) $(LIBFT)
+$(03_OBJS): $(03_SRCS)
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:

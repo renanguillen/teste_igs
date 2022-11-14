@@ -8,7 +8,7 @@ static void	std_error(int nbr)
 {
 	if (nbr == 1)
 	{
-		ft_printf("Invalid Syntax:%d\n", nbr);
+		ft_printf("Invalid Syntax\n");
 		exit(nbr);
 	}
 	else if (nbr == 2)

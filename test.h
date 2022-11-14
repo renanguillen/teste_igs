@@ -5,4 +5,12 @@
 #include <stdio.h>
 #include "./libft/includes/libft.h"
 
+typedef struct s_color
+{
+	char	code[500];
+	int		red;
+	int		green;
+	int		blue;
+}	t_color;
+
 #endif
