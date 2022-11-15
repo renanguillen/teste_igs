@@ -9,9 +9,9 @@
 typedef struct s_color
 {
 	char	code[500];
-	int		red;
-	int		green;
-	int		blue;
+	float	red;
+	float	green;
+	float	blue;
 }	t_color;
 
 #endif

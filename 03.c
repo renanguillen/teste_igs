@@ -108,7 +108,7 @@ static void	check_color(t_color *color)
 		i = 2;
 		while (color->code[i])
 		{
-			if (!ft_isdigit(color->code[i]) && (color->code[i] < 'A'
+			if (!ft_isdigit(color->code[i]) && (color->code[i] < 'A' //isdigit checa se é um algarismo de 0-9
 					|| color->code[i] > 'F' ))
 				std_error(1);
 			else
@@ -119,6 +119,24 @@ static void	check_color(t_color *color)
 	return ;
 }
 
+//exceçoes de write pt2
+static void	manual_write2(int i)
+{
+	if (i == 10)
+		write(1, "0A", 2);
+	else if (i == 11)
+		write(1, "0B", 2);
+	else if (i == 12)
+		write(1, "0C", 2);
+	else if (i == 13)
+		write(1, "0D", 2);
+	else if (i == 14)
+		write(1, "0E", 2);
+	else if (i == 15)
+		write(1, "0F", 2);
+}
+
+//exceçoes de write
 static void	manual_write(int i)
 {
 	if (i == 0)
@@ -141,58 +159,40 @@ static void	manual_write(int i)
 		write(1, "08", 2);
 	else if (i == 9)
 		write(1, "09", 2);
-	else if (i == 10)
-		write(1, "0A", 2);
-	else if (i == 11)
-		write(1, "0B", 2);
-	else if (i == 12)
-		write(1, "0C", 2);
-	else if (i == 13)
-		write(1, "0D", 2);
-	else if (i == 14)
-		write(1, "0E", 2);
-	else if (i == 15)
-		write(1, "0F", 2);
+	else
+		manual_write2(i);
 }
 
+//printa as cores
 static void	print_color(t_color *color)
 {
 	write(1, "0x", 2);
-	if (color->red > 15)
-		ft_putbase(color->red, HEXA_UPPER);
+	if (round(color->red) > 15)
+		ft_putbase(round(color->red), HEXA_UPPER); //funcao que printa a base hexadecimal
 	else
-		manual_write(color->red);
-	if (color->green > 15)
-		ft_putbase(color->green, HEXA_UPPER);
+		manual_write(round(color->red));
+	if (round(color->green) > 15)
+		ft_putbase(round(color->green), HEXA_UPPER);
 	else
-		manual_write(color->green);
-	if (color->blue > 15)
-		ft_putbase(color->red, HEXA_UPPER);
+		manual_write(round(color->green));
+	if (round(color->blue) > 15)
+		ft_putbase(round(color->blue), HEXA_UPPER);
 	else
-		manual_write(color->green);
+		manual_write(round(color->blue));
 	write(1, "\n", 1);
 }
 
 //calcula e imprime os resultados dos passos
 static void	print_steps(t_color *start, t_color *end, int steps)
 {
-	int	dr;
-	int	dg;
-	int	db;
+	float	dr;
+	float	dg;
+	float	db;
 
-	dr = (end->red - start->red);
-	dg = (end->green - start->green);
-	db = (end->blue - start->blue);
-	if (abs(dr) < steps)
-		steps = abs(dr);
-	if (abs(dg) < steps)
-		steps = abs(dg);
-	if (abs(db) < steps)
-		steps = abs(db);
-	dr = dr / steps;
-	dg = dg / steps;
-	db = db / steps;
-	ft_printf("output_esperado:\n");
+	dr = (end->red - start->red) / steps;
+	dg = (end->green - start->green) / steps;
+	db = (end->blue - start->blue) / steps;
+	ft_printf("output_esperado: ");
 	while (steps)
 	{
 		start->red += dr;
@@ -208,9 +208,9 @@ static void	print_steps(t_color *start, t_color *end, int steps)
 
 int	main(void)
 {
-	t_color	start;
-	t_color	end;
-	int		steps;
+	t_color			start;
+	t_color			end;
+	unsigned long	steps;
 
 	ft_printf("cor_inicial:");
 	init_color(&start);
@@ -219,11 +219,9 @@ int	main(void)
 	init_color(&end);
 	check_color(&end);
 	ft_printf("steps:");
-	scanf("%d", &steps);
+	scanf("%lu", &steps);
 	if (steps > 255)
 		steps = 255;
-	else if (steps < 0)
-		steps *= -1;
 	print_steps(&start, &end, steps);
 	return (0);
 }
