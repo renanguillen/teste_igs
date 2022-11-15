@@ -1,4 +1,4 @@
-//Rodar através de ./02 NUMERO_ROMANO
+//Rodar através de ./02
 //Funções ft_* foram desenvolvidas por mim durante o currículo da 42
 //elas se encontram na biblioteca libft usada
 #include "test.h"

@@ -28,7 +28,7 @@ LIBFT = ./libft/libft.a
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(Q01) $(Q02) $(Q03) $(Q05)
+$(NAME): $(LIBFT) $(Q01) $(Q02) $(Q03) $(Q04) $(Q05)
 
 $(LIBFT):
 	@make -C ./libft
@@ -36,22 +36,27 @@ $(LIBFT):
 $(Q01): $(01_OBJS)
 	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q01) $(01_OBJS) $(LIBFT)
 $(01_OBJS): $(01_SRCS)
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 $(Q02): $(02_OBJS)
 	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q02) $(02_OBJS) $(LIBFT)
 $(02_OBJS): $(02_SRCS)
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 $(Q03): $(03_OBJS)
 	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q03) $(03_OBJS) $(LIBFT) -lm
 $(03_OBJS): $(03_SRCS)
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+
+$(Q04): $(04_OBJS)
+	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q04) $(04_OBJS) $(LIBFT)
+$(04_OBJS): $(04_SRCS)
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 $(Q05): $(05_OBJS)
 	$(CC) $(CFLAGS) -o $(Q05) $(05_OBJS)
 $(05_OBJS): $(05_SRCS)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@rm -rf $(01_OBJS) $(02_OBJS) $(03_OBJS) $(04_OBJS) $(05_OBJS)

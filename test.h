@@ -14,4 +14,11 @@ typedef struct s_color
 	float	blue;
 }	t_color;
 
+typedef struct ListNode
+{
+	int				num;
+	struct ListNode	*next;
+
+}	t_ln;
+
 #endif

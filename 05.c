@@ -1,9 +1,11 @@
+//Rodar através de ./05
 #include <stdio.h>
 #include <stdlib.h>
 
 #define LIN_MAX 3
 #define COL_MAX 5
 
+//livra o conteudo do slot
 static void	free_slot(int **slot)
 {
 	int	i;
@@ -18,6 +20,7 @@ static void	free_slot(int **slot)
 	return ;
 }
 
+//cria um slot novo
 static int	**slot_in(void)
 {
 	int	i;
@@ -40,6 +43,7 @@ static int	**slot_in(void)
 	return (slot);
 }
 
+//checa se o slot inserido é o premiado
 static int	check(int **slot, int prize[LIN_MAX][COL_MAX])
 {
 	int	counter;

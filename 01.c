@@ -3,6 +3,7 @@
 //elas se encontram na biblioteca libft usada
 #include "test.h"
 
+//checagem de entrada
 static int	check_args(int argc, char **argv)
 {
 	int	len;
@@ -73,6 +74,7 @@ static int	check_odd(char *line, int i)
 	return (count);
 }
 
+//checa os palindromos por linha
 static int	check_line(char *line)
 {
 	int	even;
