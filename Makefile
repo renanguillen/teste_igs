@@ -30,17 +30,17 @@ $(LIBFT):
 	@make -C ./libft
 
 $(Q01): $(01_OBJS)
-	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q01) $(01_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q01) $(01_OBJS) $(LIBFT) -lm
 $(01_OBJS): $(01_SRCS)
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 $(Q02): $(02_OBJS)
-	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q02) $(02_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q02) $(02_OBJS) $(LIBFT) -lm
 $(02_OBJS): $(02_SRCS)
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 $(Q03): $(03_OBJS)
-	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q03) $(03_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(IFLAGS) -o $(Q03) $(03_OBJS) $(LIBFT) -lm
 $(03_OBJS): $(03_SRCS)
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 

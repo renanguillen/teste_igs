@@ -167,18 +167,18 @@ static void	manual_write(int i)
 static void	print_color(t_color *color)
 {
 	write(1, "0x", 2);
-	if (round(color->red) > 15)
-		ft_putbase(round(color->red), HEXA_UPPER); //funcao que printa a base hexadecimal
+	if (roundf(color->red) > 15)
+		ft_putbase(roundf(color->red), HEXA_UPPER); //funcao que printa a base hexadecimal
 	else
-		manual_write(round(color->red));
-	if (round(color->green) > 15)
-		ft_putbase(round(color->green), HEXA_UPPER);
+		manual_write(roundf(color->red));
+	if (roundf(color->green) > 15)
+		ft_putbase(roundf(color->green), HEXA_UPPER);
 	else
-		manual_write(round(color->green));
-	if (round(color->blue) > 15)
-		ft_putbase(round(color->blue), HEXA_UPPER);
+		manual_write(roundf(color->green));
+	if (roundf(color->blue) > 15)
+		ft_putbase(roundf(color->blue), HEXA_UPPER);
 	else
-		manual_write(round(color->blue));
+		manual_write(roundf(color->blue));
 	write(1, "\n", 1);
 }
 
